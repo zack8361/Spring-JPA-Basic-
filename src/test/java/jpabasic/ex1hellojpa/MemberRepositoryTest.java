@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
@@ -24,15 +25,9 @@ public class MemberRepositoryTest {
     public void test1(){
         // given
         Member member = new Member();
-        member.setName("kong");
-        Member member1 = new Member();
-        member1.setName("kong");
-        Member member2 = new Member();
-        member2.setName("kong");
+        member.setName("Lee chan ho");
         // when
         memberService.save(member);
-        memberService.save(member2);
-        memberService.save(member1);
 
         // then
     }
