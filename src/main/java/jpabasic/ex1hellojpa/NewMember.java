@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -27,11 +29,20 @@ public class NewMember {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
+    private LocalDate testLocalDate;
+
+    private LocalDateTime testLocalDateTime;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
-    public static void main(String[] args) {
-        NewMember newMember = new NewMember();
-        newMember.setRoleType(RoleType.ADMIN);
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Lob
+    private String description;
+
+    public NewMember(){
+
     }
 }

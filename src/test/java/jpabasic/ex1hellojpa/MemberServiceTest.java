@@ -18,10 +18,11 @@ import static org.junit.Assert.*;
 public class MemberServiceTest {
 
     @Autowired MemberService memberService;
+
     @Test
-    public void 회원가입(){
-        Member member = new Member();
-        member.setName("kon");
-        memberService.save(member);
+    public void newMember생성(){
+        NewMember newMember = new NewMember();
+        newMember.setRoleType(RoleType.ADMIN);
+        System.out.println(newMember);
     }
 }
