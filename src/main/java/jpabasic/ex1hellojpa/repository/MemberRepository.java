@@ -1,10 +1,10 @@
-package jpabasic.ex1hellojpa;
+package jpabasic.ex1hellojpa.repository;
 
 
 import jakarta.persistence.EntityManager;
+import jpabasic.ex1hellojpa.Entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

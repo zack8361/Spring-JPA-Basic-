@@ -1,6 +1,8 @@
-package jpabasic.ex1hellojpa;
+package jpabasic.ex1hellojpa.service;
 
 
+import jpabasic.ex1hellojpa.Entity.Member;
+import jpabasic.ex1hellojpa.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

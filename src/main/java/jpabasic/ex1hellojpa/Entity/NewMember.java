@@ -1,28 +1,31 @@
-package jpabasic.ex1hellojpa;
+package jpabasic.ex1hellojpa.Entity;
 
 
 import jakarta.persistence.*;
+import jpabasic.ex1hellojpa.enumc.RoleType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
+import org.antlr.v4.runtime.misc.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity
+//@Entity
 @Getter
 @Setter
 @ToString
 public class NewMember {
 
-    @Id @GeneratedValue
+
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
     private Long id;
 
     @Column(name = "user_name", nullable = false)
     private String userName;
 
+    @NotNull
     @Column(name = "user_age", nullable = false)
     private Integer age;
 
