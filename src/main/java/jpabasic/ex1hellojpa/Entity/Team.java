@@ -22,4 +22,7 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     List<Member> members = new ArrayList<>();
+
+    
+    //  연관관계 편의 메서드
 }

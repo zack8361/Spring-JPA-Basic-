@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ExampleService {
 
+
     private final ExampleRepository exampleRepository;
 
     public void saveteam(Team team){
