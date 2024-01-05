@@ -26,4 +26,8 @@ public class ExampleRepository {
     public Member findById(Long id){
         return entityManager.find(Member.class,id);
     }
+
+    public Team findByTeamId(Long id) {
+        return entityManager.find(Team.class,id);
+    }
 }

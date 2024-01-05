@@ -23,7 +23,6 @@ public class MemberServiceTest {
     @Test
     public void 회원가입(){
 
-        
 //      팀 설정
         Team team = new Team();
         team.setName("TeamA");
@@ -42,5 +41,6 @@ public class MemberServiceTest {
         for (Member m : members) {
             System.out.println(m.getUserName());
         }
+
     }
 }

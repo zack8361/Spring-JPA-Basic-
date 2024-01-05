@@ -27,4 +27,8 @@ public class ExampleService {
     public Member findById(Long id){
         return exampleRepository.findById(id);
     }
+
+    public Team findByTeamId(Long id){
+        return exampleRepository.findByTeamId(id);
+    }
 }
