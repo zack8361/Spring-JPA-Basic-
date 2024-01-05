@@ -21,4 +21,9 @@ public class ExampleRepository {
     public void saveTeam(Team team){
         entityManager.persist(team);
     }
+
+
+    public Member findById(Long id){
+        return entityManager.find(Member.class,id);
+    }
 }

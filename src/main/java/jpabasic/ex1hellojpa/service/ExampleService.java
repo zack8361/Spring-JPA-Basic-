@@ -23,4 +23,8 @@ public class ExampleService {
     public void saveMem(Member member){
         exampleRepository.saveMem(member);
     }
+
+    public Member findById(Long id){
+        return exampleRepository.findById(id);
+    }
 }
