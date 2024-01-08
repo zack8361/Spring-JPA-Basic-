@@ -9,19 +9,18 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+
 @Getter
 @Setter
-@ToString
 public class Team {
 
-    @Id @GeneratedValue
+    @Id  @GeneratedValue
     @Column(name = "TEAM_ID")
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    List<Member> members = new ArrayList<>();
+//    @OneToMany(mappedBy = "team")
+//    List<Member> members = new ArrayList<>();
 
     
     //  연관관계 편의 메서드
