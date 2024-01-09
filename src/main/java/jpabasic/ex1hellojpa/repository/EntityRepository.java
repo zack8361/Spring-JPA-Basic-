@@ -2,6 +2,7 @@ package jpabasic.ex1hellojpa.repository;
 
 
 import jakarta.persistence.EntityManager;
+import jpabasic.ex1hellojpa.EntityEx.ItemList.Item;
 import jpabasic.ex1hellojpa.EntityEx.Member;
 import jpabasic.ex1hellojpa.EntityEx.Order;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +19,10 @@ public class EntityRepository {
 
     public void saveOrder(Order order) {
         em.persist(order);
+    }
+
+    public void saveItem(Item item) {
+
+        em.persist(item);
     }
 }

@@ -1,17 +1,20 @@
-package jpabasic.ex1hellojpa.EntityEx;
+package jpabasic.ex1hellojpa.EntityEx.ItemList;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jpabasic.ex1hellojpa.EntityEx.CategoryItem;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
-@Getter @Setter
-public class Item {
+@Getter
+@Setter
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "type")
+public abstract class Item {
 
     @Id @GeneratedValue
     @Column(name = "item_id")

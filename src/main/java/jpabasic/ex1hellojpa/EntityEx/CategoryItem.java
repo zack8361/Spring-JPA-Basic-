@@ -2,6 +2,7 @@ package jpabasic.ex1hellojpa.EntityEx;
 
 
 import jakarta.persistence.*;
+import jpabasic.ex1hellojpa.EntityEx.ItemList.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

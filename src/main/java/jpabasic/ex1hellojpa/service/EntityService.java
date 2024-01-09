@@ -1,6 +1,7 @@
 package jpabasic.ex1hellojpa.service;
 
 
+import jpabasic.ex1hellojpa.EntityEx.ItemList.Item;
 import jpabasic.ex1hellojpa.EntityEx.Member;
 import jpabasic.ex1hellojpa.EntityEx.Order;
 import jpabasic.ex1hellojpa.repository.EntityRepository;
@@ -21,5 +22,9 @@ public class EntityService {
 
     public void saveOrder(Order order) {
         entityRepository.saveOrder(order);
+    }
+
+    public void saveItem(Item item){
+        entityRepository.saveItem(item);
     }
 }
