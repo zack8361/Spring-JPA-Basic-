@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Entity
 @Table(name = "ORDERS")
 @Getter
@@ -27,6 +29,10 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "delivery_id", nullable = false)
+    private Delivery delivery;
 
     private LocalDateTime orderDate;
 

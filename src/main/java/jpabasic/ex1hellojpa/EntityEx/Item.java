@@ -1,12 +1,13 @@
 package jpabasic.ex1hellojpa.EntityEx;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Getter @Setter
@@ -24,4 +25,7 @@ public class Item {
 
     @Column(name = "item_stock_quantity")
     private int stockQuantity;
+
+    @OneToMany(mappedBy = "item")
+    private List<CategoryItem> categoryItems = new ArrayList<>();
 }
