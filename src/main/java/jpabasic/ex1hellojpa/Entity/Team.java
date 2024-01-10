@@ -5,6 +5,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
 @Getter
 @Setter
 public class Team {
@@ -14,5 +19,6 @@ public class Team {
     private Long id;
     private String name;
 
-    //  연관관계 편의 메서드
+    @OneToMany(mappedBy = "team")
+    private List<NewMember> newMembers = new ArrayList<>();
 }

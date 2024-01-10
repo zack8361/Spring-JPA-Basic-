@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-//@Entity
+@Entity
 @Getter
 @Setter
 public class NewMember {
@@ -44,7 +46,7 @@ public class NewMember {
     @Lob
     private String description;
 
-    public NewMember(){
-
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 }
