@@ -2,6 +2,7 @@ package jpabasic.ex1hellojpa.EntityEx.ItemList;
 
 
 import jakarta.persistence.EntityManager;
+import jpabasic.ex1hellojpa.EntityEx.Address;
 import jpabasic.ex1hellojpa.EntityEx.Member;
 import jpabasic.ex1hellojpa.EntityEx.Order;
 import jpabasic.ex1hellojpa.enumc.OrderStatus;
@@ -48,6 +49,9 @@ public class MemberTest {
     }
     @Test
     public void getOrder(){
-
+        Member member = new Member();
+        member.setName("이찬호");
+        member.setAddress(new Address("city","street","zipcode"));
+        entityService.saveMem(member);
     }
 }

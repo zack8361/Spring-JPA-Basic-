@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,12 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    private String city;
-    private String street;
-    private String zipcode;
+
+    // 기간 Period
+    @Embedded
+    private Period period;
+
+    // 주소 Address
+    @Embedded
+    private Address address;
 }
