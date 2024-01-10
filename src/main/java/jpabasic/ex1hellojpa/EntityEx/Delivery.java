@@ -6,6 +6,8 @@ import jpabasic.ex1hellojpa.enumc.DeliveryState;
 import lombok.Getter;
 import lombok.Setter;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Getter
 @Setter
@@ -19,6 +21,6 @@ public class Delivery {
     private String zipCode;
     @Enumerated(EnumType.STRING)
     private DeliveryState deliveryState;
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 }
