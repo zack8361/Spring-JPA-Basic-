@@ -14,9 +14,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
+
 public class MemberTest {
 
     @Autowired
@@ -27,25 +29,9 @@ public class MemberTest {
 
     @Test
     public void saveMemberWithReference(){
-
-        try {
-            Member member = new Member();
-            member.setName("이찬호");
-            entityService.saveMem(member);
-
-            entityManager.flush();
-            entityManager.clear();
-//        Member findMember = entityManager.find(Member.class, member.getId());
-//        System.out.println(findMember.getName() + "/" + findMember.getId());
-
-            Member findMember = entityManager.getReference(Member.class, member.getId());
-            System.out.println(findMember.getId());
-            entityManager.detach(findMember);
-            System.out.println(findMember.getName());
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        Member member = new Member();
+        member.setName("이찬호");
+        entityManager.persist(member);
     }
     @Test
     public void getOrder(){
@@ -54,4 +40,17 @@ public class MemberTest {
         member.setAddress(new Address("city","street","zipcode"));
         entityService.saveMem(member);
     }
+
+
+    @Test
+    public void setAddress(){
+        Address address = new Address("city","street","100000");
+
+        Member member = new Member();
+        member.setAddress(address);
+
+        Member member1 = new Member();
+        member1.setAddress(address);
+    }
+
 }
