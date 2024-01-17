@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import static jakarta.persistence.EnumType.*;
+import static jakarta.persistence.FetchType.*;
 
 @Entity
 @Getter @Setter
@@ -16,7 +17,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery",fetch = LAZY)
     private Order order;
 
     @Embedded
