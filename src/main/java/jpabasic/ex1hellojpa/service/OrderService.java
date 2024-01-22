@@ -35,16 +35,22 @@ public class OrderService {
         //주문 상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
-        //주문 생성
+        //주문 생성1
         Order order = Order.createOrder(member, delivery, orderItem);
 
         // 주문 저장
         orderRepository.save(order);
+
         return order.getId();
     }
 
-    // 취소
+    /**
+     * 주문 취소
+     */
     @Transactional
-    
+    public void cancelOrder(Long orderId){
+        Order order = orderRepository.findOne(orderId);
+        order.cancel();
+    }
     // 검색
 }

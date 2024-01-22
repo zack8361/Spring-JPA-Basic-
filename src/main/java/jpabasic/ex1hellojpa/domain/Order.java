@@ -4,7 +4,9 @@ package jpabasic.ex1hellojpa.domain;
 import jakarta.persistence.*;
 import jpabasic.ex1hellojpa.enums.DeliveryStatus;
 import jpabasic.ex1hellojpa.enums.OrderStatus;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -14,10 +16,12 @@ import java.util.List;
 import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.*;
+import static lombok.AccessLevel.*;
 
 @Table(name = "ORDERS")
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = PROTECTED)
 public class Order {
 
     @Id @GeneratedValue
@@ -68,7 +72,7 @@ public class Order {
         return order;
     }
 
-    
+
     //== 비즈니스 로직 ==//
     /**
      * 주문 취소 로직
