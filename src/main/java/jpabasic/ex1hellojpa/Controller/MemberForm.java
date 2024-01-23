@@ -1,11 +1,11 @@
 package jpabasic.ex1hellojpa.Controller;
 
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
