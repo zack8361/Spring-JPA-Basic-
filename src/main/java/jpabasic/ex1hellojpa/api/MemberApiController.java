@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Array;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,10 @@ public class MemberApiController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final ObjectMapper objectMapper;
+
+    private static MemberDto apply(Member m) {
+        return new MemberDto(m.getUserName());
+    }
 
 
     @GetMapping("/api/v1/members")

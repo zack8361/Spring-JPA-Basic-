@@ -39,5 +39,4 @@ public class NewApi {
         private String name;
     }
 
-    
 }
