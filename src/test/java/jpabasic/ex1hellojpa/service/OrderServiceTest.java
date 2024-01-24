@@ -62,7 +62,7 @@ public class OrderServiceTest {
     }
     private Item createBook(String name, int price, int stockQuantity) {
         Item book = new Book();
-        book.setItemName(name);
+        book.setName(name);
         book.setPrice(price);
         book.setStockQuantity(stockQuantity);
         em.persist(book);
