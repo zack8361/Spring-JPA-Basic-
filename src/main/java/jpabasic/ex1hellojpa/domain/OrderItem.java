@@ -1,6 +1,7 @@
 package jpabasic.ex1hellojpa.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jpabasic.ex1hellojpa.domain.item.Item;
 import lombok.Getter;

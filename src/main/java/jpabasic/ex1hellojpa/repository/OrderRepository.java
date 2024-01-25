@@ -2,6 +2,7 @@ package jpabasic.ex1hellojpa.repository;
 
 
 import jakarta.persistence.EntityManager;
+import jpabasic.ex1hellojpa.api.OrderDto;
 import jpabasic.ex1hellojpa.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,8 +23,22 @@ public class OrderRepository {
         return em.find(Order.class,id);
     }
 
-//    // 검색기능
-//    public List<Order> findAll(OrderSearch orderSearch){
-//
-//    }
+    public List<Order> findAll(){
+        return em.createQuery("SELECT o FROM Order o", Order.class)
+                .getResultList();
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery("SELECT o from Order o " +
+                        "JOIN FETCH o.member " +
+                        "JOIN FETCH o.delivery",
+                         Order.class)
+                .getResultList();
+    }
+
+    public List<OrderDto> findOrderDto() {
+        return em.createQuery("SELECT o from Order o JOIN o.member m JOIN o.delivery d", OrderDto.class)
+                .getResultList();
+    }
 }
+

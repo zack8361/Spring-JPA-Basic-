@@ -42,7 +42,7 @@ public class Order {
     private LocalDateTime orderDate;
 
     @Enumerated(STRING)
-    private OrderStatus orderStatus;
+    private OrderStatus orderStatus;;
 
     public void setMember(Member member){
         this.member = member;

@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,7 +53,6 @@ public class TestApiController {
 
     @Data
     static class RequestUpdate{
-        @NotNull(message = "여기는 비어있으면 안됩니다")
         private String name;
     }
 
@@ -114,7 +112,6 @@ public class TestApiController {
 
     @Data
     public static class CreateRequest{
-        @NotNull(message = "반드시 있어야하는 항목이")
         private String name;
     }
 }
