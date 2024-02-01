@@ -7,7 +7,6 @@ import jpabasic.ex1hellojpa.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -63,6 +62,5 @@ public class OrderRepository {
                 .setMaxResults(limit)
                 .getResultList();
     }
-}
 
-`
+}
