@@ -2,7 +2,6 @@ package jpabasic.ex1hellojpa.repository;
 
 
 import jakarta.persistence.EntityManager;
-import jpabasic.ex1hellojpa.api.OrderDto;
 import jpabasic.ex1hellojpa.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -35,13 +34,6 @@ public class OrderRepository {
                         Order.class)
                 .getResultList();
     }
-
-
-    public List<OrderDto> findOrderDto() {
-        return em.createQuery("SELECT o from Order o JOIN o.member m JOIN o.delivery d", OrderDto.class)
-                .getResultList();
-    }
-
 
     public List<Order> findAllWithItem() {
         return em.createQuery("SELECT DISTINCT o From Order o " +

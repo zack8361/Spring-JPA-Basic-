@@ -4,61 +4,55 @@ package jpabasic.ex1hellojpa.api;
 import jpabasic.ex1hellojpa.domain.Address;
 import jpabasic.ex1hellojpa.domain.Order;
 import jpabasic.ex1hellojpa.domain.OrderItem;
-import jpabasic.ex1hellojpa.enums.OrderStatus;
 import jpabasic.ex1hellojpa.repository.OrderRepository;
+import jpabasic.ex1hellojpa.service.OrderService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
-
-/**
- * ManyToOne뽑기
- */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/test")
-public class OrderTestApi {
-
+public class OrderControllers {
+    private final OrderService orderService;
     private final OrderRepository orderRepository;
+    
 
-    @GetMapping("/orders")
-    public List<OrderDto3> orders(){
-
-        List<Order> orders = orderRepository.findAll();
+    @GetMapping("/api/v3/orders")
+    public List<OrderDto> ordersV3(){
+        List<Order> orders = orderRepository.findAllWithItem();
         return orders.stream()
-                .map(OrderDto3::new)
+                .map(OrderDto::new)
                 .collect(toList());
     }
 
 
     @Data
-    static class OrderDto3{
+    static class OrderDto{
         private Long orderId;
         private String name;
-        private Address address;
-        private OrderStatus orderStatus;
         private LocalDateTime orderDate;
+        private Address address;
         private List<OrderItemDto> orderItems;
-        public OrderDto3(Order order) {
+        public OrderDto(Order order) {
             this.orderId = order.getId();
             this.name = order.getMember().getUserName();
-            this.address = order.getDelivery().getAddress();
-            this.orderStatus = order.getOrderStatus();
             this.orderDate = order.getOrderDate();
+            this.address = order.getDelivery().getAddress();
             this.orderItems = order.getOrderItems().stream()
                     .map(OrderItemDto::new)
                     .collect(toList());
         }
     }
+
     @Data
-    static class OrderItemDto{
+    static class OrderItemDto {
         private String itemName;
         private int orderPrice;
         private int count;

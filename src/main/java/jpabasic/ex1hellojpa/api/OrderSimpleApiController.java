@@ -48,11 +48,6 @@ public class OrderSimpleApiController {
                 .collect(toList());
     }
 
-    @GetMapping("api/v4/simple-orders")
-    public List<OrderDto> orderV4(){
-        return orderRepository.findOrderDto();
-    }
-
 
     @Data
     static class SimpleOrderDto{
