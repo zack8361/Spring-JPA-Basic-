@@ -5,6 +5,8 @@ import jpabasic.ex1hellojpa.domain.Address;
 import jpabasic.ex1hellojpa.domain.Order;
 import jpabasic.ex1hellojpa.domain.OrderItem;
 import jpabasic.ex1hellojpa.repository.OrderRepository;
+import jpabasic.ex1hellojpa.repository.order.query.OrderQueryDto;
+import jpabasic.ex1hellojpa.repository.order.query.OrderQueryRepository;
 import jpabasic.ex1hellojpa.service.OrderService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import static java.util.stream.Collectors.*;
 public class OrderControllers {
     private final OrderService orderService;
     private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
     
 
     @GetMapping("/api/v3/orders")
@@ -30,6 +33,19 @@ public class OrderControllers {
         return orders.stream()
                 .map(OrderDto::new)
                 .collect(toList());
+    }
+
+    @GetMapping("/api/v3.1/orders")
+    public List<OrderDto> ordersV3_page(){
+        List<Order> orders = orderRepository.findAllWithMemberDelivery();
+        return orders.stream()
+                .map(OrderDto::new)
+                .collect(toList());
+    }
+
+    @GetMapping("/api/v4/orders")
+    public List<OrderQueryDto> ordersV4(){
+        return orderQueryRepository.findOrderQueryDtos();
     }
 
 

@@ -3,6 +3,7 @@ package jpabasic.ex1hellojpa.repository;
 
 import jakarta.persistence.EntityManager;
 import jpabasic.ex1hellojpa.domain.Order;
+import jpabasic.ex1hellojpa.repository.order.query.OrderQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -54,5 +55,6 @@ public class OrderRepository {
                 .setMaxResults(limit)
                 .getResultList();
     }
+
 
 }
