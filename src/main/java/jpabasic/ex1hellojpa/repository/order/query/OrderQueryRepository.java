@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -37,5 +39,27 @@ public class OrderQueryRepository {
                         "JOIN o.member m " +
                         "JOIN o.delivery d", OrderQueryDto.class)
                 .getResultList();
+    }
+
+    public List<OrderQueryDto> findAllByDto_optimization() {
+        List<OrderQueryDto> result = findOrders();
+
+        List<Long> orderIds = result.stream()
+                .map(OrderQueryDto::getOrderId)
+                .toList();
+
+        List<OrderItemQueryDto> orderItems = em.createQuery("SELECT " +
+                        "new jpabasic.ex1hellojpa.repository.order.query.OrderItemQueryDto(oi.order.id, i.name,oi.orderPrice,oi.count) " +
+                        "FROM OrderItem oi " +
+                        "JOIN oi.item i " +
+                        "WHERE oi.id = :orderIds", OrderItemQueryDto.class)
+                .setParameter("orderIds", orderIds)
+                .getResultList();
+
+        Map<Long, List<OrderItemQueryDto>> collect = orderItems.stream()
+                .collect(Collectors.groupingBy(orderItemQueryDto -> orderItemQueryDto.getOrderId()));
+
+        result.forEach(o-> o.setOrderItems(collect.get(o.getOrderId())));
+        return result;
     }
 }
