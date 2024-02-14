@@ -2,28 +2,31 @@ package jpabasic.ex1hellojpa.repository.order.query;
 
 
 import jpabasic.ex1hellojpa.domain.Address;
-import jpabasic.ex1hellojpa.domain.OrderItem;
 import jpabasic.ex1hellojpa.enums.OrderStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
-public class OrderQueryDto {
+public class OrderFlatDto {
 
     private Long orderId;
     private String name;
-    private LocalDateTime orderDate;
+    private LocalDateTime localDateTime;
     private OrderStatus orderStatus;
     private Address address;
-    private List<OrderItemQueryDto> orderItems;
+    private String itemName;
+    private int orderPrice;
+    private int count;
 
-    public OrderQueryDto(Long orderId, String name, LocalDateTime orderDate, OrderStatus orderStatus, Address address) {
+    public OrderFlatDto(Long orderId, String name, LocalDateTime localDateTime, OrderStatus orderStatus, Address address, String itemName, int orderPrice, int count) {
         this.orderId = orderId;
         this.name = name;
-        this.orderDate = orderDate;
+        this.localDateTime = localDateTime;
         this.orderStatus = orderStatus;
         this.address = address;
+        this.itemName = itemName;
+        this.orderPrice = orderPrice;
+        this.count = count;
     }
 }

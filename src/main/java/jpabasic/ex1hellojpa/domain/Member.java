@@ -22,7 +22,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
-    @NotEmpty(message = "값이 비어있을수 없습니다.")
+
     private String userName;
 
     @Embedded

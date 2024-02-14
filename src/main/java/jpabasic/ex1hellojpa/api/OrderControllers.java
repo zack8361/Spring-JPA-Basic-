@@ -5,6 +5,7 @@ import jpabasic.ex1hellojpa.domain.Address;
 import jpabasic.ex1hellojpa.domain.Order;
 import jpabasic.ex1hellojpa.domain.OrderItem;
 import jpabasic.ex1hellojpa.repository.OrderRepository;
+import jpabasic.ex1hellojpa.repository.order.query.OrderFlatDto;
 import jpabasic.ex1hellojpa.repository.order.query.OrderQueryDto;
 import jpabasic.ex1hellojpa.repository.order.query.OrderQueryRepository;
 import jpabasic.ex1hellojpa.service.OrderService;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
 
@@ -53,6 +53,13 @@ public class OrderControllers {
         return orderQueryRepository.findAllByDto_optimization();
     }
 
+//    @GetMapping("/api/v6/orders")
+//    public List<OrderQueryDto> ordersV6(){
+//        List<OrderFlatDto> flatData = orderQueryRepository.findAllByDto_flat();
+//
+//        flatData.stream()
+//                .map()
+//    }
 
     @Data
     static class OrderDto{
